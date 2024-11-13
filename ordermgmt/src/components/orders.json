@@ -1,0 +1,172 @@
+[
+    {
+        "orderId": 1001,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-11",
+        "status": "Shipped",
+        "items": [
+            {
+                "itemName": "Paracetamol",
+                "quantity": 2,
+                "pricePerUnit": 15
+            },
+            {
+                "itemName": "Ibuprofen",
+                "quantity": 1,
+                "pricePerUnit": 12
+            }
+        ],
+        "totalAmount": 42,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1002,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-12",
+        "status": "Pending",
+        "items": [
+            {
+                "itemName": "Cetirizine",
+                "quantity": 3,
+                "pricePerUnit": 9
+            }
+        ],
+        "totalAmount": 27,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1003,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-13",
+        "status": "Delivered",
+        "items": [
+            {
+                "itemName": "Amoxicillin",
+                "quantity": 1,
+                "pricePerUnit": 30
+            },
+            {
+                "itemName": "Omeprazole",
+                "quantity": 2,
+                "pricePerUnit": 22
+            }
+        ],
+        "totalAmount": 74,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1004,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-14",
+        "status": "Cancelled",
+        "items": [
+            {
+                "itemName": "Metformin",
+                "quantity": 5,
+                "pricePerUnit": 16
+            }
+        ],
+        "totalAmount": 80,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1005,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-15",
+        "status": "Delivered",
+        "items": [
+            {
+                "itemName": "Atorvastatin",
+                "quantity": 1,
+                "pricePerUnit": 25
+            },
+            {
+                "itemName": "Azithromycin",
+                "quantity": 2,
+                "pricePerUnit": 45
+            }
+        ],
+        "totalAmount": 115,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1006,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-16",
+        "status": "Pending",
+        "items": [
+            {
+                "itemName": "Losartan",
+                "quantity": 2,
+                "pricePerUnit": 22
+            },
+            {
+                "itemName": "Lisinopril",
+                "quantity": 1,
+                "pricePerUnit": 28
+            }
+        ],
+        "totalAmount": 72,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1007,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-17",
+        "status": "Shipped",
+        "items": [
+            {
+                "itemName": "Clopidogrel",
+                "quantity": 1,
+                "pricePerUnit": 35
+            },
+            {
+                "itemName": "Simvastatin",
+                "quantity": 3,
+                "pricePerUnit": 32
+            }
+        ],
+        "totalAmount": 131,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1008,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-18",
+        "status": "Delivered",
+        "items": [
+            {
+                "itemName": "Levothyroxine",
+                "quantity": 2,
+                "pricePerUnit": 23
+            },
+            {
+                "itemName": "Prednisone",
+                "quantity": 1,
+                "pricePerUnit": 26
+            }
+        ],
+        "totalAmount": 72,
+        "shippingAddress": "123 Elm Street, Springfield"
+    },
+    {
+        "orderId": 1009,
+        "customerName": "John Doe",
+        "orderDate": "2024-10-19",
+        "status": "Cancelled",
+        "items": [
+            {
+                "itemName": "Fluticasone",
+                "quantity": 1,
+                "pricePerUnit": 30
+            },
+            {
+                "itemName": "Montelukast",
+                "quantity": 2,
+                "pricePerUnit": 22
+            }
+        ],
+        "totalAmount": 74,
+        "shippingAddress": "123 Elm Street, Springfield"
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "key": 1,
+        "value": "home",
+        "label": "Home"
+    },
+    {
+        "key": 2,
+        "value": "medicines",
+        "label": "Medicines"
+    },
+    {
+        "key": 3,
+        "value": "order",
+        "label": "Order"
+    },
+    {
+        "key": 4,
+        "value": "report",
+        "label": "Report"
+    },
+    {
+        "key": 5,
+        "value": "medicines2",
+        "label": "Medicines2"
+    }
+]

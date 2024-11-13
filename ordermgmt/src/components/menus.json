@@ -1,0 +1,20 @@
+[
+    {
+        "key": 1,
+        "value": "notification",
+        "label": "Notification",
+        "url": "./bell.png"
+    },
+    {
+        "key": 2,
+        "value": "user",
+        "label": "User",
+        "url": "./user.jpg"
+    },
+    {
+        "key": 3,
+        "value": "cart",
+        "label": "Cart",
+        "url": "./cart.png"
+    }
+]

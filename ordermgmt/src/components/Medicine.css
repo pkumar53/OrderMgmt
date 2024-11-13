@@ -1,0 +1,29 @@
+.qty-inp input{
+    width: 30px;
+    border: none;
+    outline: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #4f6716;
+    background-color: inherit;
+    font-size: 15px;
+}
+.qty-inp {
+    background-color: rgb(167, 186, 81);;
+    border: 1px solid;
+    border-radius: 4px;
+    height: 22px;
+    align-content: center;
+}
+.qty-inp button {
+    background-color: inherit;
+    width: 15px;
+    color: #4f6716;
+    border: 0;
+    font-weight: bold;
+    font-size: 15px;
+}
+.qty-inp button:active {
+    color: white;
+    background-color: #4f6716;
+}

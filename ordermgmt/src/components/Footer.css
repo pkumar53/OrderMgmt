@@ -1,0 +1,40 @@
+.footer {
+    background-color: #dfea8b;
+    display: block;
+    height: 200px;
+}
+
+.footerlogo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.findUs {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.findUs img.facebook {
+    height: 50px;
+}
+
+.findUs img.twitter {
+    height: 50px;
+}
+
+.findUs img.insta {
+    height: 45px;
+}
+
+.findUs img.youtube {
+    height: 43px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.footertext {
+    font-weight: bold;
+    font-size: 15px;
+    color: #4f6716;
+}

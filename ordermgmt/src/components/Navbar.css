@@ -1,0 +1,70 @@
+.navbar {
+  height: 115px;
+}
+
+.navbar nav {
+  height: 75px;
+}
+
+.prodlogo,
+.prodlogo * {
+  height: 100%;
+}
+
+.prodlogo p {
+  font-size: 20px;
+  width: 100px;
+}
+.searchbar {
+  height: 100%;
+}
+
+.navbar-right,
+.navbar-right * {
+  height: 100%;
+  align-content: center;
+}
+
+.navbar-right div img {
+  height: 30px;
+  border: 1px solid;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.subnavbar {
+  height: 40px;
+  background-color: rgb(167, 186, 81);
+  font-size: 14px;
+}
+
+.subnavbar ul {
+  margin: 0 35vh;
+  height: 100%;
+  padding-left: 10%;
+}
+
+.subnavbar ul li {
+  padding: 0 40px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: bold;
+  color: #4f6716;
+}
+
+.subnavbar ul li a {
+  color: #4f6716;
+  text-decoration: none;
+}
+
+.subnavbar ul li:hover,
+.subnavbar ul li:hover a,
+.subnavbar ul li.activeTab,
+.subnavbar ul li.activeTab a {
+  background-color: #4f6716;
+  color: #fff;
+  border-bottom: 0;
+  text-decoration: none;
+  cursor: pointer;
+}

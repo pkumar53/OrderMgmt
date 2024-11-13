@@ -1,0 +1,11 @@
+.aboutBox {
+    height: 350px;
+}
+.infobox {
+    width: 70%;
+}
+.infoicon {
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+}
