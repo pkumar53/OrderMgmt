@@ -1,10 +1,11 @@
 import React from 'react'
+import CommonNavBar from './CommonNavBar'
 
 function User() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <CommonNavBar />
+    </>
   )
 }
 

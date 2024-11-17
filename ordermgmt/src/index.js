@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Medicines from './components/Medicines';
-import Medicines2 from './components/Medicines2';
 import Order from './components/Order';
 import Report from './components/Report';
 import Cart from './components/Cart';
@@ -30,10 +29,6 @@ const router = createBrowserRouter ([
   {
     path: "medicines",
     element: <Medicines />
-  },
-  {
-    path: "medicines2",
-    element: <Medicines2 />
   },
   {
     path: "order",

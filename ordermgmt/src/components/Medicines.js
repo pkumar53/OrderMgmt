@@ -2,53 +2,45 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import medicines from "./medicines.json";
-import "./Medicine.css";
 import "./common.css";
+import "./Medicines.css";
 
 function Medicines() {
-  const [activeTab, setActiveTab] = useState("medicines");
-  const [qty, setQty] = useState(0);
-
+    const addToCart = (index) => {
+        alert(medicines[index].itemName + " added to cart");
+    }
+  const [activeTab, setActiveTab] = useState("medicines2");
   return (
     <div>
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
-
       <div className="container mb-20">
-        <div className="mt-20">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Sl No</th>
-                <th>Item Name</th>
-                <th>Company</th>
-                <th>Stocks</th>
-                <th>Discount</th>
-                <th>Puchased Price</th>
-                <th>MRP</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {medicines.map((medicine, index) => (
-                <tr key={medicine.slNo}>
-                  <td>{medicine.slNo}</td>
-                  <td>{medicine.itemName}</td>
-                  <td>{medicine.company}</td>
-                  <td>{medicine.stocks}</td>
-                  <td>{medicine.discount}</td>
-                  <td>{medicine.purchasedPrice}</td>
-                  <td>{medicine.mrp}</td>
-                  <td>
-                    <div className="qty-inp">
-                      <button onClick={() => setQty(qty - 1)}>-</button>
-                      <input value={qty} onChange={(e) => setQty(Number(e.target.value))} />
-                      <button onClick={() => setQty(qty + 1)}>+</button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <h3 className="mt-20 ml-20 mb-20">All Products</h3>
+        <div className="product">
+          {medicines.map((medicine, index) => (
+            <div id={`prodbox${index+1}`} className="prodbox">
+              <div className="prodicon">
+                <img src={medicine.imageUrl} alt={medicine.itemName}></img>
+              </div>
+              <div className="prodname mt-20">
+                <p className="name">{medicine.itemName}</p>
+                <p className="desc">strip of {medicine.tabletsPerStrip} tablets</p>
+                {/* <p className="desc">In Stocks {medicine.stocks}</p> */}
+                <p className="desc">{medicine.company}</p>
+              </div>
+              <div className="prodinfo mt-10">
+                <div className="fleft">
+                  <p className="price">
+                    MRP <strike>₹{medicine.mrp}</strike>{" "}
+                    <div className="discount">{medicine.discount}% OFF</div>
+                  </p>
+                  <div className="fp">₹{medicine.finalPrice}</div>
+                </div>
+                <div className="fright">
+                  <button className="btn addbtn" onClick={() => addToCart(index)}>Add</button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <Footer />

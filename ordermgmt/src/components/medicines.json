@@ -9,7 +9,8 @@
         "mrp": 20,
         "finalPrice": 18,
         "tabletsPerStrip": 10,
-        "imageUrl": "https://example.com/images/paracetamol.jpg"
+        "imageUrl": "https://example.com/images/paracetamol.jpg",
+        "addedToCart": true
     },
     {
         "slNo": 2,
@@ -21,7 +22,8 @@
         "mrp": 18,
         "finalPrice": 17.1,
         "tabletsPerStrip": 5,
-        "imageUrl": "https://example.com/images/ibuprofen.jpg"
+        "imageUrl": "https://example.com/images/ibuprofen.jpg",
+        "addedToCart": true
     },
     {
         "slNo": 3,
@@ -33,7 +35,8 @@
         "mrp": 15,
         "finalPrice": 13.8,
         "tabletsPerStrip": 10,
-        "imageUrl": "https://example.com/images/cetirizine.jpg"
+        "imageUrl": "https://example.com/images/cetirizine.jpg",
+        "addedToCart": true
     },
     {
         "slNo": 4,
@@ -45,7 +48,8 @@
         "mrp": 45,
         "finalPrice": 39.6,
         "tabletsPerStrip": 5,
-        "imageUrl": "https://example.com/images/amoxicillin.jpg"
+        "imageUrl": "https://example.com/images/amoxicillin.jpg",
+        "addedToCart": true
     },
     {
         "slNo": 5,
@@ -57,7 +61,8 @@
         "mrp": 30,
         "finalPrice": 27,
         "tabletsPerStrip": 10,
-        "imageUrl": "https://example.com/images/omeprazole.jpg"
+        "imageUrl": "https://example.com/images/omeprazole.jpg",
+        "addedToCart": true
     },
     {
         "slNo": 6,
