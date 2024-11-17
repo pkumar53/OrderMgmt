@@ -75,7 +75,7 @@ function Cart() {
                           {cartItem.medicine.discount}% OFF
                         </div>
                       </div>
-                      <div className="cartbtn mt-20">
+                      <div className="cartbtn fright mt-20">
                         <button onClick={() => decrQty(cartItem.key)}>
                           {" "}
                           -{" "}
