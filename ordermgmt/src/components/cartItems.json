@@ -1,0 +1,172 @@
+[
+  {
+    "key": 1,
+    "medicine": {
+      "key": "med001",
+      "itemName": "Paracetamol 500mg",
+      "company": "ABC Pharmaceuticals",
+      "stocks": 100,
+      "discount": 10,
+      "purchasedPrice": 15.5,
+      "mrp": 20.0,
+      "finalPrice": 18.0,
+      "tabletsPerStrip": 10,
+      "ImageUrl": "https://example.com/images/paracetamol500mg.jpg",
+      "addedToCart": true
+    },
+    "quantity": 2
+  },
+  {
+    "key": 2,
+    "medicine": {
+      "key": "med002",
+      "itemName": "Aspirin 75mg",
+      "company": "XYZ Healthcare",
+      "stocks": 50,
+      "discount": 5,
+      "purchasedPrice": 25.0,
+      "mrp": 30.0,
+      "finalPrice": 28.5,
+      "tabletsPerStrip": 20,
+      "ImageUrl": "https://example.com/images/aspirin75mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 1
+  },
+  {
+    "key": 3,
+    "medicine": {
+      "key": "med003",
+      "itemName": "Amoxicillin 250mg",
+      "company": "HealthCo",
+      "stocks": 200,
+      "discount": 15,
+      "purchasedPrice": 40.0,
+      "mrp": 50.0,
+      "finalPrice": 42.5,
+      "tabletsPerStrip": 10,
+      "ImageUrl": "https://example.com/images/amoxicillin250mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 3
+  },
+  {
+    "key": 4,
+    "medicine": {
+      "key": "med004",
+      "itemName": "Loratadine 10mg",
+      "company": "MediCorp",
+      "stocks": 150,
+      "discount": 20,
+      "purchasedPrice": 10.0,
+      "mrp": 12.0,
+      "finalPrice": 9.6,
+      "tabletsPerStrip": 15,
+      "ImageUrl": "https://example.com/images/loratadine10mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 2
+  },
+  {
+    "key": 5,
+    "medicine": {
+      "key": "med005",
+      "itemName": "Vitamin C 1000mg",
+      "company": "HealthPlus",
+      "stocks": 300,
+      "discount": 25,
+      "purchasedPrice": 30.0,
+      "mrp": 40.0,
+      "finalPrice": 35.0,
+      "tabletsPerStrip": 30,
+      "ImageUrl": "https://example.com/images/vitaminC1000mg.jpg",
+      "addedToCart": true
+    },
+    "quantity": 1
+  },
+  {
+    "key": 6,
+    "medicine": {
+      "key": "med006",
+      "itemName": "Ibuprofen 400mg",
+      "company": "PharmaTech",
+      "stocks": 75,
+      "discount": 12,
+      "purchasedPrice": 18.0,
+      "mrp": 22.0,
+      "finalPrice": 19.5,
+      "tabletsPerStrip": 10,
+      "ImageUrl": "https://example.com/images/ibuprofen400mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 3
+  },
+  {
+    "key": 7,
+    "medicine": {
+      "key": "med007",
+      "itemName": "Cetirizine 10mg",
+      "company": "MedLine",
+      "stocks": 500,
+      "discount": 8,
+      "purchasedPrice": 5.0,
+      "mrp": 6.0,
+      "finalPrice": 5.5,
+      "tabletsPerStrip": 10,
+      "ImageUrl": "https://example.com/images/cetirizine10mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 1
+  },
+  {
+    "key": 8,
+    "medicine": {
+      "key": "med008",
+      "itemName": "Pantoprazole 40mg",
+      "company": "StomachCare",
+      "stocks": 120,
+      "discount": 18,
+      "purchasedPrice": 30.0,
+      "mrp": 36.0,
+      "finalPrice": 32.0,
+      "tabletsPerStrip": 15,
+      "ImageUrl": "https://example.com/images/pantoprazole40mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 1
+  },
+  {
+    "key": 9,
+    "medicine": {
+      "key": "med009",
+      "itemName": "Ciprofloxacin 500mg",
+      "company": "BioMed",
+      "stocks": 80,
+      "discount": 10,
+      "purchasedPrice": 20.0,
+      "mrp": 25.0,
+      "finalPrice": 22.5,
+      "tabletsPerStrip": 10,
+      "ImageUrl": "https://example.com/images/ciprofloxacin500mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 2
+  },
+  {
+    "key": 10,
+    "medicine": {
+      "key": "med010",
+      "itemName": "Prednisolone 5mg",
+      "company": "MedScience",
+      "stocks": 50,
+      "discount": 5,
+      "purchasedPrice": 8.0,
+      "mrp": 10.0,
+      "finalPrice": 9.5,
+      "tabletsPerStrip": 30,
+      "ImageUrl": "https://example.com/images/prednisolone5mg.jpg",
+      "addedToCart": false
+    },
+    "quantity": 1
+  }
+]
