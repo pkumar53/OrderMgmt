@@ -43,5 +43,5 @@ public class User {
     private String status;
 
     @Column(name = "failed_login_attempts")
-    private Long loginAttempt;
+    private long loginAttempt;
 }

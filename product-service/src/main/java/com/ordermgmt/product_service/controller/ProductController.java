@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "http://localhost:3000") // Allow requests from React app
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -19,6 +20,11 @@ public class ProductController {
     @GetMapping
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
+    }
+
+    @GetMapping("{productId}")
+    public Product getProductById(@PathVariable Long productId) {
+        return productService.getProductById(productId);
     }
 
     // Get all product categories

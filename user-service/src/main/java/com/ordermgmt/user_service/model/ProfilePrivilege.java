@@ -15,7 +15,7 @@ public class ProfilePrivilege {
     private Long profPrivId;
 
     @ManyToOne
-    @JoinColumn(name = "profile_id", nullable = false)
+    @JoinColumn(name = "prof_id", nullable = false)
     private Profile profile;
 
     @ManyToOne

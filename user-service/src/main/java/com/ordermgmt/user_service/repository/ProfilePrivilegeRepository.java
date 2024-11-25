@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ProfilePrivilegeRepository extends JpaRepository<ProfilePrivilege, Long> {
-    List<ProfilePrivilege> findAllByProfileId(Long profileId);
+    List<ProfilePrivilege> findAllByProfile_ProfileId(Long profileId);
 }

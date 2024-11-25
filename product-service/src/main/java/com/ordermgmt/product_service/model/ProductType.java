@@ -18,6 +18,6 @@ public class ProductType {
     private String productTypeName;
 
     @OneToOne
-    @JoinColumn(name = "product_parent_type_id")
+    @JoinColumn(name = "product_parent_type_id", nullable = true, unique = false)
     private ProductType parentProductType;
 }

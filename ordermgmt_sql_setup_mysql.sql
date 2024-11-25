@@ -156,35 +156,35 @@ constraint fk_emails_user_id foreign key (user_id) references users (user_id)
 
 insert into emails values (1, 1, 'bablu.mail@gmail.com', 'Active' );
 
-drop table prodtypes;
-create table prodtypes
-(prod_type_id int not null,
+drop table product_type;
+create table product_type
+(product_type_id int not null,
 type_name varchar(40) not null,
-prod_parent_type_id int,
-constraint pk_prodtypes primary key (prod_type_id),
-constraint fk_prodtypes foreign key (prod_parent_type_id) references prodtypes (prod_type_id)
+parent_product_type_id int,
+constraint pk_product_type primary key (product_type_id),
+constraint fk_product_type foreign key (parent_product_type_id) references product_type (product_type_id)
 );
 
-insert into prodtypes values (1, 'Medicines', null );
-insert into prodtypes values (2, 'General Medicines', 1 );
-insert into prodtypes values (3, 'Cardio Medicines', 1 );
-insert into prodtypes values (4, 'Pregnecy Medicines', 1 );
-insert into prodtypes values (5, 'ENT Medicines', 1 );
+insert into product_type values (1, 'Medicines', null );
+insert into product_type values (2, 'General Medicines', 1 );
+insert into product_type values (3, 'Cardio Medicines', 1 );
+insert into product_type values (4, 'Pregnecy Medicines', 1 );
+insert into product_type values (5, 'ENT Medicines', 1 );
 
-select * from prodtypes;
+select * from product_type;
 
 drop table products;
 create table products
 (product_id int not null,
 prod_short_name varchar(40) not null,
 prod_name varchar(200),
-prod_type_id int not null,
+product_type_id int not null,
 brand_name varchar(40),
 prod_form varchar(20),
 price_per_qty decimal(10,2),
 description varchar(200),
 constraint pk_products primary key (product_id),
-constraint fk_products_type foreign key (prod_type_id) references prodtypes (prod_type_id)
+constraint fk_product_type foreign key (product_type_id) references product_type (product_type_id)
 );
 
 insert into products values (1, 'paracetamol', 'Paracetamol 650 mg', 1, 45.00, 'Medicine for fever and pain' );

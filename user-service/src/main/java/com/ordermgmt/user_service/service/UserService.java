@@ -63,9 +63,13 @@ public class UserService {
         return userRepository.findById(userId);
     }
 
-    public List<ProfilePrivilege> getUserPrivileges(Long userId) {
+    public List<Privilege> getUserPrivileges(Long userId) {
         Optional<User> user = userRepository.findById(userId);
-        return user.map(value -> profilePrivilegeRepository.findAllByProfileId(value.getProfile().getProfileId())).orElse(null);
+        if (user.isPresent()) {
+            List<ProfilePrivilege> profilePrivileges = profilePrivilegeRepository.findAllByProfile_ProfileId(user.get().getProfile().getProfileId());
+            return profilePrivileges.stream().map(ProfilePrivilege::getPrivilege).toList();
+        }
+        return null;
     }
 
     public User addUser(User user) {

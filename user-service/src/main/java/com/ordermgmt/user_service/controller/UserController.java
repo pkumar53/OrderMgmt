@@ -1,6 +1,6 @@
 package com.ordermgmt.user_service.controller;
 
-import com.ordermgmt.user_service.model.ProfilePrivilege;
+import com.ordermgmt.user_service.model.Privilege;
 import com.ordermgmt.user_service.model.User;
 import com.ordermgmt.user_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public ResponseEntity<User> getUser(@RequestParam("userId") Long userId) {
+    @GetMapping("{userId}")
+    public ResponseEntity<User> getUser(@PathVariable Long userId) {
         return ResponseEntity.ok().body(userService.getUser(userId).get());
     }
 
-    @GetMapping("/privileges")
-    public ResponseEntity<List<ProfilePrivilege>> getUserPrivileges(@RequestParam("userId") Long userId) {
+    @GetMapping("/privileges/{userId}")
+    public ResponseEntity<List<Privilege>> getUserPrivileges(@PathVariable Long userId) {
         return ResponseEntity.ok().body(userService.getUserPrivileges(userId));
     }
 

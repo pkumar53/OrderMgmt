@@ -35,4 +35,13 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "prod_type_id", nullable = false)
     private ProductType productType;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "tablets_per_strip")
+    private String tabletsPerStrip;
+
+    @Column(name = "discount")
+    private Double discount;
 }
