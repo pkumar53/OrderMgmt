@@ -4,8 +4,13 @@ import Footer from "./Footer";
 import "./common.css";
 import "./Cart.css";
 import axios from "axios";
+import CartCount from "./CartCount";
+import DeliveryAddress from "./DeliveryAddress";
+import Navbar from "./Navbar";
 
-function Cart() {
+function Cart(props) {
+  const [activeTab, setActiveTab] = useState("user");
+  const {cartCount, setCartCount} = CartCount();
   const [filteredItems, setFilteredItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +35,7 @@ function Cart() {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading cart...</p>;
   }
 
   if (error) {
@@ -38,6 +43,7 @@ function Cart() {
   }
 
   const decrQty = async (key) => {
+    setCartCount(cartCount - 1);
     const updatedItems = filteredItems.map((item) =>
       item.cartId === key ? { ...item, quantity: item.quantity - 1 } : item
     );
@@ -79,6 +85,7 @@ function Cart() {
   };
 
   const incrQty = async (key) => {
+    setCartCount(cartCount + 1);
     const updatedItems = filteredItems.map((item) =>
       item.cartId === key ? { ...item, quantity: item.quantity + 1 } : item
     );
@@ -124,11 +131,18 @@ function Cart() {
   const shippingFee = 10;
   return (
     <div>
-      <CommonNavBar />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount}/>
       <div className="container mb-20">
         <h3 className="mt-20 ml-20 mb-20">Cart</h3>
         <div className="cartContainer">
           <div className="cartleft fleft mt-10 ml-10">
+            {cartCount <= 0 ? 
+            <div className="order" >
+              <h1 style={{textAlign: "center"}} className="mt-40">No Medicines added yet.</h1>
+              <div className="mt-40">
+                <button className="btn placeOrderBtn mt-20" style={{width: "200px"}} onClick={() => window.location.href="medicines"}>Add Medicines</button>
+              </div>
+            </div> : 
             <div className="order">
               <h4>Order #12123123</h4>
               {filteredItems.map((cartItem, index) => (
@@ -174,6 +188,7 @@ function Cart() {
                 </div>
               ))}
             </div>
+          }
           </div>
           <div className="cartright bill fleft mt-10 pad-20 ml-10">
             <h4>Bill Summary</h4>
@@ -214,15 +229,7 @@ function Cart() {
             <div className="mt-40">
               <button className="btn placeOrderBtn mt-20">Place Order</button>
             </div>
-            <div className="delivery mt-40">
-              <h4>Delivery Address</h4>
-              <div className="mt-20">
-                <p className="desc">G3 Ground Floor Lake Vista Bellandur</p>
-                <p className="desc">Bangalore, Karnataka</p>
-                <p className="desc">560103</p>
-              </div>
-              <button className="btn edtAdd">Edit</button>
-            </div>
+            <DeliveryAddress />
           </div>
         </div>
       </div>

@@ -18,5 +18,10 @@
         "key": 4,
         "value": "report",
         "label": "Report"
+    },
+    {
+        "key": 5,
+        "value": "user",
+        "label": "User"
     }
 ]

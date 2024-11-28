@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/addresses")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
     @Autowired
     private AddressService addressService;
@@ -19,6 +20,11 @@ public class AddressController {
     @GetMapping
     public ResponseEntity<List<Address>> getAllAddresses(@RequestParam("userId") Long userId) {
         return ResponseEntity.ok(addressService.getUserAddresses(userId));
+    }
+
+    @GetMapping("{userId}/shippingAddress")
+    public ResponseEntity<Address> getShippingAddressForUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(addressService.getShippingAddressForUser(userId));
     }
 
     // Add a new address

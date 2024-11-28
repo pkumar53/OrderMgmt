@@ -2,12 +2,14 @@ import React, {useState} from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import orders from './orders.json'
+import CartCount from './CartCount';
 
-function Order() {
+function Order(props) {
   const [activeTab, setActiveTab] = useState('order');
+  const {cartCount, setCartCount} = CartCount();
   return (
     <div>
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab}/>
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount}/>
       <div className="container mb-20">
         <div className="mt-20">
           <table className="table">

@@ -100,4 +100,8 @@ public class AddressService {
     public List<City> getCitiesByDistrict(Long districtId) {
         return cityRepository.findByDistrictDistrictId(districtId);
     }
+
+    public Address getShippingAddressForUser(Long userId) {
+        return addressRepository.findByUserIdAndAddressType(userId, "mailing");
+    }
 }

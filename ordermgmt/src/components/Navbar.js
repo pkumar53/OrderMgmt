@@ -15,19 +15,26 @@ function Navbar(props) {
 
   return (
     <>
-      <CommonNavBar />
+      <CommonNavBar cartCount = {props.cartCount}/>
       <div className="subnavbar">
         <ul>
-          {navMenus.map((navMenu) => (
-            <li
-              className={`fleft aligncenter ${
-                props.activeTab === navMenu.value ? "activeTab" : ""
-              }`}
-              onClick={() => navigate(navMenu.value)}
-            >
-              {navMenu.label}
-            </li>
-          ))}
+          {navMenus.map((navMenu) => 
+          {
+            if (navMenu.value !== 'user' || (navMenu.value === 'user' && props.activeTab === 'user')) {
+              return (
+            
+                <li
+                  className={`fleft aligncenter ${
+                    props.activeTab === navMenu.value ? "activeTab" : ""
+                  }`}
+                  onClick={() => navigate(navMenu.value)}
+                >
+                  {navMenu.label}
+                </li>
+              )
+            }
+          }
+          )}
         </ul>
       </div>
     </>

@@ -4,8 +4,10 @@ import Footer from "./Footer";
 import axios from "axios";
 import "./common.css";
 import "./Medicines.css";
+import CartCount from './CartCount';
 
 function Medicines() {
+  const {cartCount, setCartCount} = CartCount();
   const [medicines, setMedicines] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,6 +42,7 @@ function Medicines() {
 
   const addToCart = async (index) => {
     // call cart service to add the product to the cart
+    setCartCount(cartCount + 1);
     try {
       const cartItem = {
         product: medicines[index],
@@ -58,7 +61,7 @@ function Medicines() {
   };
   return (
     <div>
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount}/>
       <div className="container mb-20">
         <h3 className="mt-20 ml-20 mb-20">All Products</h3>
         <div className="product">

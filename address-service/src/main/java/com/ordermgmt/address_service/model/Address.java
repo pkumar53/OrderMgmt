@@ -17,9 +17,6 @@ public class Address {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "city_name")
-    private String cityName;
-
     @Column(name = "area_name")
     private String areaName;
 
@@ -31,6 +28,9 @@ public class Address {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "address_type")
+    private String addressType;
 
     @ManyToOne
     @JoinColumn(name = "country_id")

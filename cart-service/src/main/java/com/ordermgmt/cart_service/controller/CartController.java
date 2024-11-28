@@ -27,6 +27,11 @@ public class CartController {
         return ResponseEntity.ok(cartService.getCartByUserId(userId));
     }
 
+    @GetMapping("{userId}/count")
+    public ResponseEntity<Integer> getCartCountForUserId(@PathVariable Long userId) {
+        return ResponseEntity.ok(cartService.getCartCountByUserId(userId));
+    }
+
     @DeleteMapping
     public ResponseEntity<Void> removeProduct(@RequestBody CartDto cartDto) {
         cartService.removeProductFromCart(cartDto);

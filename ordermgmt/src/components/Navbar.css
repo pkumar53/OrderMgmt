@@ -8,6 +8,7 @@ nav.container {
 .prodlogo,
 .prodlogo * {
   height: 100%;
+  cursor: pointer;
 }
 
 .prodlogo p {
@@ -66,4 +67,18 @@ nav.container {
   border-bottom: 0;
   text-decoration: none;
   cursor: pointer;
+}
+
+#cartCount {
+  font-weight: bold;
+  border-radius: 50%;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  background-color: #4f6716;
+  cursor: pointer;
+  margin: 20px 0 0 -15px;
 }

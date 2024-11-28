@@ -9,6 +9,7 @@ import Report from './components/Report';
 import Cart from './components/Cart';
 import User from './components/User';
 import Notification from './components/Notification';
+import Address from './components/Address';
 
 
 import {
@@ -49,6 +50,10 @@ const router = createBrowserRouter ([
   {
     path: "cart",
     element: <Cart />
+  },
+  {
+    path: "address",
+    element: <Address />
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

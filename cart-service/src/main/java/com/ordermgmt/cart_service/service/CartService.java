@@ -3,6 +3,7 @@ package com.ordermgmt.cart_service.service;
 import com.ordermgmt.cart_service.dto.CartDto;
 import com.ordermgmt.cart_service.dto.Product;
 import com.ordermgmt.cart_service.dto.User;
+import com.ordermgmt.cart_service.dto.Address;
 import com.ordermgmt.cart_service.model.Cart;
 import com.ordermgmt.cart_service.repository.CartRepository;
 import jakarta.transaction.Transactional;
@@ -15,8 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class CartService {
@@ -101,5 +104,14 @@ public class CartService {
                     (cartDto.getProduct().getPricePerQty() * cartDto.getProduct().getDiscount() / 100));
         }
         cartRepository.save(cart);
+    }
+
+    public int getCartCountByUserId(Long userId) {
+        List<Cart> carts = cartRepository.findByUserId(userId);
+        return carts.stream().reduce(0, (sum, cart) -> sum + cart.getQuantity(), Integer::sum);
+    }
+
+    public Address getShippingAddress(Long userId) {
+        return restTemplate.getForEntity("http://localhost:8081/addresses/" + userId + "/shippingAddress", Address.class).getBody();
     }
 }
