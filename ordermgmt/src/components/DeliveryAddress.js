@@ -34,6 +34,7 @@ function DeliveryAddress() {
 
   const editAddress = (shipAddress) => {
     console.log("Address editing is pending");
+    window.location.href='address';
   }
   return (
     <div className="delivery mt-40">
