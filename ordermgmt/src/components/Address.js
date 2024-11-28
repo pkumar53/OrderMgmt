@@ -5,7 +5,7 @@ import CartCount from "./CartCount";
 
 function Address() {
   const [activeTab, setActiveTab] = useState("user");
-  const { cartCount, setCartCount } = CartCount();
+  const { cartCount } = CartCount();
   const [addresses, setAddresses] = useState([]);
   const [loading, setLoading] = useState('');
   const [error, setError] = useState('');

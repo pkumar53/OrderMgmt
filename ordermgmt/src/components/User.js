@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 function User() {
   const [activeTab, setActiveTab] = useState("user");
-  const {cartCount, setCartCount} = CartCount();
+  const {cartCount} = CartCount();
   return (
     <>
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount}/>
