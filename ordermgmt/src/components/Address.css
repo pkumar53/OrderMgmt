@@ -1,0 +1,48 @@
+.addressBox {
+  height: 180px;
+  border: 1px solid lightgray;
+  box-sizing: border-box;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.17);
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.radioDiv {
+  width: 50px;
+}
+
+.addrDiv {
+  text-align: justify;
+  color: gray;
+}
+
+.addressType {
+  font-weight: bold;
+  font-size: 15px;
+  color: darkolivegreen;
+}
+
+.addressBtn {
+  width: 50%;
+}
+
+.addressInpDiv {
+  overflow: hidden;
+  height: 50px;
+  align-content: center;
+  text-align: justify;
+}
+
+.labelDiv {
+    padding: 0 50px 0 100px;
+    font-size: 18px;
+    height: 38px;
+    width: 125px;
+}
+.addressInpDiv>div>input[type="text"] {
+    width: 515px;
+}
+.addressInpDiv>div>input[type="radio"] {
+    width: 20px;
+}
