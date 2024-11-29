@@ -334,6 +334,15 @@ function AddOrEditAddress() {
                       className="input ml-20 fleft"
                       name="addressType"
                       type="radio"
+                      checked={address.addressType === 'office'}
+                      value={"other"}
+                      onChange={handleChange}
+                    ></input>
+                    <p className="fleft ml-10 mt-10">Office</p>
+                    <input
+                      className="input ml-20 fleft"
+                      name="addressType"
+                      type="radio"
                       checked={address.addressType === 'other'}
                       value={"other"}
                       onChange={handleChange}
