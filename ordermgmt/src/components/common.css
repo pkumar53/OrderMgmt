@@ -114,3 +114,11 @@ td {
 .pad-20 {
     padding: 20px;
 }
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}

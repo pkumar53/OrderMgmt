@@ -31,7 +31,7 @@ public class AddressService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String USER_SERVICE = "http://USER-SERVICE/users/";
+    private static final String USER_SERVICE = "http://localhost:8082/users/";
 
     // Get all addresses of a user
     public List<Address> getUserAddresses(Long userId) {
@@ -101,7 +101,7 @@ public class AddressService {
         return cityRepository.findByDistrictDistrictId(districtId);
     }
 
-    public Address getShippingAddressForUser(Long userId) {
-        return addressRepository.findByUserIdAndAddressType(userId, "mailing");
+    public Address getAddressByAddressId(Long addressId) {
+        return addressRepository.findByAddressId(addressId);
     }
 }

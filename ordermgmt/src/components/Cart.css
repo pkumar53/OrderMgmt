@@ -88,24 +88,6 @@
     font-size: 14px;
     text-align: center;
 }
-
-.edtAdd {
-    border: 1px solid gray;
-    border-radius: 3px;
-    height: 30px;
-    width: 50px;
-}
-.edtAdd:hover {
-    border: 0;
-    color: white;
-    background-color: gray;
-}
-.edtAdd:active {
-    border: 1px solid gray;
-    color: gray;
-    background-color: white;
-}
-
 .placeOrderBtn {
     border-radius: 5px;
     width: 100%;
@@ -113,8 +95,17 @@
     background-color: green;
     color: white
 }
+.placeOrderBtn:hover {
+    border: 1px solid green;
+    color: green;
+    background-color: lightgreen;
+}
 
 .placeOrderBtn:active {
-    color: green;
-    background-color: white;
+    background-color: green;
+    color: white
+}
+
+.edtAdd {
+    width: 50%;
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CommonNavBar from "./CommonNavBar";
 import Footer from "./Footer";
 import "./common.css";
 import "./Cart.css";
@@ -7,8 +6,12 @@ import axios from "axios";
 import CartCount from "./CartCount";
 import DeliveryAddress from "./DeliveryAddress";
 import Navbar from "./Navbar";
+import { useLocation } from "react-router-dom";
 
 function Cart(props) {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const deliveryAddressId = searchParams.get("addressId");
   const [activeTab, setActiveTab] = useState("user");
   const {cartCount, setCartCount} = CartCount();
   const [filteredItems, setFilteredItems] = useState([]);
@@ -144,7 +147,6 @@ function Cart(props) {
               </div>
             </div> : 
             <div className="order">
-              <h4>Order #12123123</h4>
               {filteredItems.map((cartItem, index) => (
                 <div className="cartproduct mt-20 pad-20">
                   <div className="cartprodicon fleft mt-20">
@@ -229,7 +231,7 @@ function Cart(props) {
             <div className="mt-40">
               <button className="btn placeOrderBtn mt-20">Place Order</button>
             </div>
-            <DeliveryAddress />
+            <DeliveryAddress shippingAddressId={deliveryAddressId}/>
           </div>
         </div>
       </div>

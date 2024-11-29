@@ -10,7 +10,7 @@ import Cart from './components/Cart';
 import User from './components/User';
 import Notification from './components/Notification';
 import Address from './components/Address';
-
+import AddOrEditAddress from './components/AddOrEditAddress';
 
 import {
   createBrowserRouter,
@@ -54,6 +54,10 @@ const router = createBrowserRouter ([
   {
     path: "address",
     element: <Address />
+  },
+  {
+    path: "addOrEditAddress",
+    element: <AddOrEditAddress />
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

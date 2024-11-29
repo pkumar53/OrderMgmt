@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/addresses")
+@RequestMapping("/user/{userId}/addresses")
 @CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
     @Autowired
@@ -18,17 +18,17 @@ public class AddressController {
 
     // Get all addresses for a user
     @GetMapping
-    public ResponseEntity<List<Address>> getAllAddresses(@RequestParam("userId") Long userId) {
+    public ResponseEntity<List<Address>> getAllAddresses(@PathVariable Long userId) {
         return ResponseEntity.ok(addressService.getUserAddresses(userId));
     }
 
-    @GetMapping("{userId}/shippingAddress")
-    public ResponseEntity<Address> getShippingAddressForUser(@PathVariable Long userId) {
-        return ResponseEntity.ok(addressService.getShippingAddressForUser(userId));
+    @GetMapping("{addressId}")
+    public ResponseEntity<Address> getAddress(@PathVariable Long addressId) {
+        return ResponseEntity.ok(addressService.getAddressByAddressId(addressId));
     }
 
     // Add a new address
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Address> createAddress(@RequestBody Address address) {
         return ResponseEntity.status(HttpStatus.CREATED).body(addressService.addAddress(address));
     }
