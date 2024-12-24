@@ -9,8 +9,8 @@ function Address() {
   const [activeTab, setActiveTab] = useState("user");
   const { cartCount } = CartCount();
   const [addresses, setAddresses] = useState([]);
-  const [loading, setLoading] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const navigate = useNavigate();
 
@@ -32,10 +32,6 @@ function Address() {
 
     fetchUserAddresses();
   }, []);
-
-  if (loading) {
-    return <p>Loading cart...</p>;
-  }
 
   if (error) {
     return <p style={{ color: "red" }}>Error: {error}</p>;
@@ -69,76 +65,69 @@ function Address() {
 
   return (
     <div>
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        cartCount={cartCount}
-      />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount} />
       <div className="container mb-20">
         <h3 className="mt-20 ml-20 mb-20">User Address</h3>
+        {loading ? 
         <div className="cartContainer">
-          <div className="cartleft fleft mt-10 ml-10">
-            {addresses.length > 0 ? (
-              <div className="order">
-                {addresses.map((address) => (
-                  <div className="addressBox">
-                    <div className="radioDiv fleft">
-                      <input
-                        type="radio"
-                        name="addressRadio"
-                        onChange={(event) => handleAddressClick(event)}
-                        value={address.addressId}
-                      />
-                    </div>
-                    <div className="addrDiv fleft ml-20">
-                      <span className="addressType">{address.addressType}</span>
-                      <p>
-                        {address.addressDetail} {address.areaName}{" "}
-                        {address.city.cityName}
-                      </p>
-                      <p>
-                        {address.district.district} {address.state.stateName}{" "}
-                        {address.country.countryName}
-                      </p>
-                      <p>{address.zipCode}</p>
-                      <br />
-                      <p>{address.userId}User name and phone</p>
-                    </div>
+          <h1 style={{ textAlign: "center" }} className="mt-40">Loading.....</h1>
+        </div> :
+        <>
+          {addresses.length > 0 ?
+            <div className="cartContainer">
+              <div className="cartleft fleft mt-10 ml-10">
+                  <div className="order">
+                    {addresses.map((address) => (
+                      <div className="addressBox">
+                        <div className="radioDiv fleft">
+                          <input type="radio" name="addressRadio" value={address.addressId}
+                            onChange={(event) => handleAddressClick(event)}/>
+                        </div>
+                        <div className="addrDiv fleft ml-20">
+                          <span className="addressType">{address.addressType}</span>
+                          <p>
+                            {address.addressDetail} {address.areaName}{" "}
+                            {address.city.cityName}
+                          </p>
+                          <p>
+                            {address.district.district} {address.state.stateName}{" "}
+                            {address.country.countryName}
+                          </p>
+                          <p>{address.zipCode}</p>
+                          <br />
+                          <p>{address.userId}User name and phone</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
               </div>
-            ) : (
-              <div className="order">
-                <h1 style={{ textAlign: "center" }} className="mt-40">
-                  No Addresses added yet.
-                </h1>
-                <div className="mt-40">
-                  <button
-                    className="btn placeOrderBtn mt-20"
-                    style={{ width: "200px" }}
-                    onClick={() => (window.location.href = "medicines")}
-                  >
-                    Add Medicines
-                  </button>
-                </div>
+              <div className="cartright bill fleft mt-10 pad-20 ml-10">
+                <button className="btn placeOrderBtn addressBtn mb-20" onClick={()=>navigate('/addOrEditAddress')}>Add New Address</button>
+                <br />
+                {selectedAddress && (
+                  <>
+                    <button className="btn placeOrderBtn addressBtn mb-20" onClick={()=>navigate(`/addOrEditAddress?addressId=${selectedAddress.addressId}`)}>Edit Address</button>
+                    <br />
+                    <button className="btn placeOrderBtn addressBtn mb-20" onClick={() => deleteAddress()}>Remove Address</button>
+                    <br />
+                    <button className="btn placeOrderBtn addressBtn mb-20" onClick={()=>navigate(`/cart?addressId=${selectedAddress.addressId}`)}>Continue to Cart</button>
+                    <br />
+                  </>
+                )}
               </div>
-            )}
-          </div>
-          <div className="cartright bill fleft mt-10 pad-20 ml-10">
-            <button className="btn placeOrderBtn addressBtn mb-20" onClick={()=>navigate('/addOrEditAddress')}>Add New Address</button>
-            <br />
-            {selectedAddress && (
-              <>
-                <button className="btn placeOrderBtn addressBtn mb-20" onClick={()=>navigate(`/addOrEditAddress?addressId=${selectedAddress.addressId}`)}>Edit Address</button>
-                <br />
-                <button className="btn placeOrderBtn addressBtn mb-20" onClick={() => deleteAddress()}>Remove Address</button>
-                <br />
-                <button className="btn placeOrderBtn addressBtn mb-20" onClick={()=>navigate(`/cart?addressId=${selectedAddress.addressId}`)}>Continue to Cart</button>
-                <br />
-              </>
-            )}
-          </div>
-        </div>
+            </div> :
+            <div className="cartContainer">
+              <h1 style={{ textAlign: "center" }} className="mt-40">No Addresses added yet.</h1>
+              <div className="mt-40">
+                <button className="btn placeOrderBtn mt-20" style={{ width: "200px" }}
+                      onClick={()=>navigate('/addOrEditAddress')}>
+                      Add New Address
+                </button>
+              </div>
+            </div>
+          }
+        </>
+        }
       </div>
       <Footer />
     </div>

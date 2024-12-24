@@ -1,6 +1,5 @@
-package com.ordermgmt.cart_service.dto;
+package com.ordermgmt.order_service.dto;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +16,7 @@ public class Product {
     private ProductType productType;
     private String imageUrl;
     private String tabletsPerStrip;
-    private double discount;
+    private Double discount;
     private Double discountPercentage;
-    private double discountedPrice;
+    private Double discountedPrice;
 }

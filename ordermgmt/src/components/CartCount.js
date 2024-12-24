@@ -6,7 +6,7 @@ const CartCount = () => {
   useEffect(() => {
     const fetchCartCount = async () => {
       try {
-        const response = await fetch("http://localhost:8084/cart/1/count");
+        const response = await fetch("http://localhost:8084/user/1/carts/count");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

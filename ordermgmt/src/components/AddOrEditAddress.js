@@ -19,6 +19,9 @@ function AddOrEditAddress() {
   const [states, setStates] = useState([]);
   const [countries, setCountries] = useState([]);
   const [districts, setDistricts] = useState([]);
+  const [stateDiv, setStateDiv] = useState(false);
+  const [districtDiv, setDistrictDiv] = useState(false);
+  const [cityDiv, setCityDiv] = useState(false);
   const [address, setAddress] = useState({
     userId: 1,
     addressDetail: "",
@@ -133,13 +136,20 @@ function AddOrEditAddress() {
     }
   };
   const fetchStates = async (value) => {
+    setStateDiv(false);
+    setDistrictDiv(false);
+    setCityDiv(false);
+
     try {
       const response = await fetch("http://localhost:8081/user/1/addresses/states?countryId="+value);
       if (response.ok) {
         const data = await response.json();
-        setStates(data);
+        if (data && data.length > 0) {
+          setStateDiv(true);
+          setStates(data);
+        }
       } else {
-        setError("Failed to fetch countries.");
+          setError("Failed to fetch countries.");
       }
     } catch (error) {
       setError("Failed to fetch countries.");
@@ -148,11 +158,17 @@ function AddOrEditAddress() {
   };
 
   const fetchDistricts = async (value) => {
+    setDistrictDiv(false);
+    setCityDiv(false);
+
     try {
       const response = await fetch("http://localhost:8081/user/1/addresses/districts?stateId="+value);
       if (response.ok) {
         const data = await response.json();
-        setDistricts(data);
+        if (data && data.length > 0) {
+          setDistrictDiv(true);
+          setDistricts(data);
+        }
       } else {
         setError("Failed to fetch countries.");
       }
@@ -163,11 +179,16 @@ function AddOrEditAddress() {
   };
 
   const fetchCities = async (value) => {
+    setCityDiv(false);
+
     try {
       const response = await fetch("http://localhost:8081/user/1/addresses/cities?districtId="+value);
       if (response.ok) {
         const data = await response.json();
-        setCities(data);
+        if (data && data.length > 0) {
+          setCityDiv(true);
+          setCities(data);
+        }
       } else {
         setError("Failed to fetch countries.");
       }
@@ -194,7 +215,7 @@ function AddOrEditAddress() {
                   <div className="fleft labelDiv aligncenter">
                     Address Line 1
                   </div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <input
                       className="input"
                       type="text"
@@ -209,7 +230,7 @@ function AddOrEditAddress() {
                   <div className="fleft labelDiv aligncenter">
                     Address Line 2
                   </div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <input
                       className="input"
                       type="text"
@@ -222,7 +243,7 @@ function AddOrEditAddress() {
                 </div>
                 <div className="addressInpDiv">
                   <div className="fleft labelDiv aligncenter">Country</div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <select
                       className="input"
                       name="country.countryId"
@@ -239,9 +260,10 @@ function AddOrEditAddress() {
                     </select>
                   </div>
                 </div>
+                {stateDiv && (
                 <div className="addressInpDiv">
                   <div className="fleft labelDiv aligncenter">State</div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <select
                       className="input"
                       name="state.stateId"
@@ -258,9 +280,11 @@ function AddOrEditAddress() {
                     </select>
                   </div>
                 </div>
+                )}
+                {districtDiv && (
                 <div className="addressInpDiv">
                   <div className="fleft labelDiv aligncenter">District</div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <select
                       className="input"
                       name="district.districtId"
@@ -277,9 +301,11 @@ function AddOrEditAddress() {
                     </select>
                   </div>
                 </div>
+                )}
+                {cityDiv && (
                 <div className="addressInpDiv">
                   <div className="fleft labelDiv aligncenter">City</div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <select
                       className="input"
                       name="city.cityId"
@@ -296,9 +322,10 @@ function AddOrEditAddress() {
                     </select>
                   </div>
                 </div>
+                )}
                 <div className="addressInpDiv">
                   <div className="fleft labelDiv aligncenter">Zip</div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <input
                       className="input"
                       type="text"
@@ -311,9 +338,9 @@ function AddOrEditAddress() {
                 </div>
                 <div className="addressInpDiv">
                   <div className="fleft labelDiv aligncenter">Address Type</div>
-                  <div className="fleft">
+                  <div className="inpDiv">
                     <input
-                      className="input ml-20 fleft"
+                      className="input fleft"
                       name="addressType"
                       type="radio"
                       value={"home"}
@@ -335,7 +362,7 @@ function AddOrEditAddress() {
                       name="addressType"
                       type="radio"
                       checked={address.addressType === 'office'}
-                      value={"other"}
+                      value={"office"}
                       onChange={handleChange}
                     ></input>
                     <p className="fleft ml-10 mt-10">Office</p>

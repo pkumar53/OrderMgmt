@@ -22,7 +22,7 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("{productId}")
+    @GetMapping("/{productId}")
     public Product getProductById(@PathVariable Long productId) {
         return productService.getProductById(productId);
     }
@@ -53,15 +53,15 @@ public class ProductController {
         return productService.addOrUpdateStock(productId, newStock, reservedStock);
     }
 
-    @PutMapping("{productId}/removeStock")
+    @PutMapping("/{productId}/removeStock")
     public ProductStocks removeStock(@PathVariable Long productId,
                                      @RequestParam Integer orderedStock,
                                      @RequestParam Integer orderedReservedStock) {
         return productService.removeStock(productId, orderedStock, orderedReservedStock);
     }
 
-    @GetMapping("/available")
-    public boolean isStockAvailable(@RequestParam("productId") Long productId) {
+    @GetMapping("/{productId}/available")
+    public boolean isStockAvailable(@PathVariable Long productId) {
         return productService.isStocksAvailable(productId);
     }
 }

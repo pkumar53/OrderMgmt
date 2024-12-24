@@ -1,6 +1,7 @@
 package com.ordermgmt.cart_service.repository;
 
 import com.ordermgmt.cart_service.model.Cart;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     List<Cart> findByUserId(Long userId);
 
     void deleteByUserIdAndProductId(Long userId, Long productId);
+
+    @Transactional
+    void deleteAllByUserId(Long userId);
 }

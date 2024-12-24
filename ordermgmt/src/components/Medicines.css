@@ -1,6 +1,7 @@
 
 .product {
     overflow: hidden;
+    min-height: 600px;
 }
 .prodbox {
     border: 1px solid lightgray;

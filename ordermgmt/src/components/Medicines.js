@@ -32,10 +32,6 @@ function Medicines() {
     fetchMedicines();
   }, []);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
   if (error) {
     return <p style={{ color: "red" }}>Error: {error}</p>;
   }
@@ -51,7 +47,7 @@ function Medicines() {
         },
         quantity: 1
       }
-      const response = await axios.post("http://localhost:8084/cart/addSelectedProduct", cartItem);
+      const response = await axios.post("http://localhost:8084/user/1/carts/addSelectedProduct", cartItem);
       console.log(response.data); // Success message
       return response.data;
     } catch (error) {
@@ -64,6 +60,7 @@ function Medicines() {
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount}/>
       <div className="container mb-20">
         <h3 className="mt-20 ml-20 mb-20">All Products</h3>
+        {!loading ?
         <div className="product">
           {medicines.map((medicine, index) => (
             <div id={`prodbox${index + 1}`} className="prodbox">
@@ -82,12 +79,11 @@ function Medicines() {
                 <div className="fleft">
                   <p className="price">
                     MRP <strike>₹{(medicine.pricePerQty).toFixed(2)}</strike>{" "}
-                    <div className="discount">{medicine.discount}% OFF</div>
+                    <div className="discount">{medicine.discountPercentage}% OFF</div>
                   </p>
                   <div className="fp">
                     ₹
-                    {(medicine.pricePerQty -
-                      medicine.pricePerQty * (medicine.discount / 100)).toFixed(2)}
+                    {(medicine.discountedPrice).toFixed(2)}
                   </div>
                 </div>
                 <div className="fright">
@@ -101,7 +97,10 @@ function Medicines() {
               </div>
             </div>
           ))}
-        </div>
+        </div> : 
+        <div className="product">
+          <h1 style={{textAlign: "center"}} className="mt-40">Loading....</h1>
+        </div>}
       </div>
       <Footer />
     </div>

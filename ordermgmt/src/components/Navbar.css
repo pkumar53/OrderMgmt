@@ -41,16 +41,16 @@ nav.container {
 .subnavbar ul {
   margin: 0 35vh;
   height: 100%;
-  padding-left: 10%;
+  padding-left: 5%;
 }
 
 .subnavbar ul li {
-  padding: 0 40px;
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
   font-weight: bold;
   color: #4f6716;
+  width: 115px;
+  text-align: center;
+  list-style: none;
 }
 
 .subnavbar ul li a {

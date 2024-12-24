@@ -33,12 +33,16 @@ public class Cart {
     @Column(name = "discount")
     private double discount;
 
-    @Column(name = "totalPrice")
-    private double totalPrice;
+    @Column(name = "discounted_price")
+    private double discountedPrice;
+
+    @Column(name = "discount_pct")
+    private Double discountPercentage;
 
     @Column(name = "checked_out")
     private Boolean checkedOut;
 
     @Column(name = "checkout_date")
     private Timestamp checkOutDate;
+
 }

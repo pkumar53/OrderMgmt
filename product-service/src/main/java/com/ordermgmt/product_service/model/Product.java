@@ -44,4 +44,10 @@ public class Product {
 
     @Column(name = "discount")
     private Double discount;
+
+    @Column(name = "discount_pct")
+    private Double discountPercentage;
+
+    @Column(name = "discountedPrice")
+    private Double discountedPrice;
 }

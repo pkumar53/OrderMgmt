@@ -8,18 +8,11 @@ import com.ordermgmt.cart_service.model.Cart;
 import com.ordermgmt.cart_service.repository.CartRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 @Service
 public class CartService {
@@ -29,7 +22,7 @@ public class CartService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public Cart addOrUpdateProductInCart(CartDto cartDto) {
+    public CartDto addOrUpdateProductInCart(CartDto cartDto) {
         Optional<Cart> existingCart = cartRepository.findByUserIdAndProductId(cartDto.getUser().getUserId(), cartDto.getProduct().getProductId());
         Cart cart = null;
         if (existingCart.isPresent()) {
@@ -38,17 +31,20 @@ public class CartService {
             cart = new Cart();
             cart.setUserId(cartDto.getUser().getUserId());
             cart.setProductId(cartDto.getProduct().getProductId());
+//            cart.setAddDate();
         }
         cart.setQuantity(cartDto.getQuantity());
-        cart.setDiscount(cartDto.getProduct().getDiscount());
-        cart.setPrice(cartDto.getProduct().getPricePerQty());
-        cart.setTotalPrice(cartDto.getQuantity() *
-                (cartDto.getProduct().getPricePerQty() -
-                        (cartDto.getProduct().getPricePerQty() * cartDto.getProduct().getDiscount() / 100)));
-        return cartRepository.save(cart);
+        cart.setDiscount(cartDto.getDiscount());
+        cart.setPrice(cartDto.getPrice());
+        cart.setDiscountPercentage(cartDto.getDiscountPercentage());
+        cart.setDiscount(cartDto.getDiscount());
+        cart.setDiscountedPrice(cartDto.getDiscountedPrice());
+        CartDto cartDtoRes = mapCartToCartDto(cartRepository.save(cart));
+        cartDtoRes.setUser(cartDto.getUser());
+        return cartDtoRes;
     }
 
-    public List<CartDto> getCartByUserId(Long userId) {
+    public List<CartDto> getCartsByUserId(Long userId) {
         List<Cart> carts = cartRepository.findByUserId(userId);
         User user = restTemplate.getForEntity("http://localhost:8082/users/" + userId, User.class).getBody();
 
@@ -70,12 +66,16 @@ public class CartService {
         cartDto.setAddDate(cart.getAddDate());
         cartDto.setQuantity(cart.getQuantity());
         cartDto.setPrice(cart.getPrice());
-        cartDto.setTotalPrice(cart.getTotalPrice());
+        cartDto.setDiscount(cart.getDiscount());
+        cartDto.setDiscountPercentage(cart.getDiscountPercentage());
+        cartDto.setDiscountedPrice(cart.getDiscountedPrice());
         cartDto.setDiscount(cart.getDiscount());
         cartDto.setCheckedOut(cart.getCheckedOut());
         cartDto.setCheckOutDate(cart.getCheckOutDate());
-        Product product = restTemplate.getForObject("http://localhost:8083/products/" + cart.getProductId(), Product.class);
-        cartDto.setProduct(product);
+        if (cartDto.getProduct() == null) {
+            Product product = restTemplate.getForObject("http://localhost:8083/products/" + cart.getProductId(), Product.class);
+            cartDto.setProduct(product);
+        }
         return cartDto;
     }
 
@@ -86,6 +86,7 @@ public class CartService {
         }
     }
 
+    /* Called from Medicine page Add button*/
     public void addSelectedProductToCart(CartDto cartDto) {
         //get currently active user///for time being it is 1 only
         Optional<Cart> cartOptional = cartRepository.findByUserIdAndProductId(cartDto.getUser().getUserId(), cartDto.getProduct().getProductId());
@@ -98,11 +99,12 @@ public class CartService {
             cart.setUserId(cartDto.getUser().getUserId());
             cart.setProductId(cartDto.getProduct().getProductId());
             cart.setQuantity(1);
-            cart.setDiscount(cartDto.getProduct().getDiscount());
-            cart.setPrice(cartDto.getProduct().getPricePerQty());
-            cart.setTotalPrice(cartDto.getProduct().getPricePerQty() -
-                    (cartDto.getProduct().getPricePerQty() * cartDto.getProduct().getDiscount() / 100));
         }
+        cart.setDiscount(cartDto.getProduct().getDiscount() * cart.getQuantity());
+        cart.setPrice(cartDto.getProduct().getPricePerQty() * cart.getQuantity());
+        cart.setDiscountPercentage(cartDto.getProduct().getDiscountPercentage());
+        cart.setDiscountedPrice(cartDto.getProduct().getDiscountedPrice() * cart.getQuantity());
+
         cartRepository.save(cart);
     }
 
@@ -113,5 +115,9 @@ public class CartService {
 
     public Address getShippingAddress(Long userId) {
         return restTemplate.getForEntity("http://localhost:8081/addresses/" + userId + "/shippingAddress", Address.class).getBody();
+    }
+
+    public void deleteAllCartsByUserId(Long userId) {
+        cartRepository.deleteAllByUserId(userId);
     }
 }

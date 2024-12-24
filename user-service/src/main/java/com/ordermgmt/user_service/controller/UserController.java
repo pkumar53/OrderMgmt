@@ -17,12 +17,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<User> getUser(@PathVariable Long userId) {
         return ResponseEntity.ok().body(userService.getUser(userId).get());
     }
 
-    @GetMapping("/privileges/{userId}")
+    @GetMapping("/{userId}/privileges")
     public ResponseEntity<List<Privilege>> getUserPrivileges(@PathVariable Long userId) {
         return ResponseEntity.ok().body(userService.getUserPrivileges(userId));
     }
@@ -32,12 +32,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(user));
     }
 
-    @PutMapping("{userId}")
+    @PutMapping("/{userId}")
     public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(userId, user));
     }
 
-    @DeleteMapping("{userId}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
