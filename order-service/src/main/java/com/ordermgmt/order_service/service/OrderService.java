@@ -2,7 +2,6 @@ package com.ordermgmt.order_service.service;
 
 import com.ordermgmt.order_service.OrderStatus;
 import com.ordermgmt.order_service.dto.*;
-import com.ordermgmt.order_service.exception.OrderNotFoundException;
 import com.ordermgmt.order_service.model.Order;
 import com.ordermgmt.order_service.model.OrderDetail;
 import com.ordermgmt.order_service.repository.OrderDetailRepository;
@@ -88,7 +87,7 @@ public class OrderService {
     }
 
     public List<OrderRequestDTO> getOrdersByUserId(Long userId) {
-        List<Order> orders = orderRepository.findByUserId(userId);
+        List<Order> orders = orderRepository.findByUserIdOrderByOrderDateDesc(userId);
         User user = restTemplate.getForObject("http://localhost:8082/users/{userId}", User.class, userId);
         return orders.stream().map(order -> mapOrderToOrderRequestDTO(order, user)).collect(Collectors.toList());
     }
