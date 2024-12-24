@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import orders from './orders.json'
 import CartCount from './CartCount';
 
 function Order(props) {
@@ -45,7 +44,7 @@ function Order(props) {
           </div> :
           <>
             {orders.length > 0 ?
-              <div className="mt-20">
+              <div className="cartContainer mt-20">
                 <table className="table">
                   <thead>
                     <tr>
