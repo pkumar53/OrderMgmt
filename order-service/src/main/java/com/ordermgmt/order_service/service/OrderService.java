@@ -129,7 +129,8 @@ public class OrderService {
             orderDetailRequestDTO.setPrice(orderDetail.getPrice());
             orderDetailRequestDTO.setPaymentMode(orderDetail.getPaymentMode());
             orderDetailRequestDTO.setPaymentMerchant(orderDetail.getPaymentMerchant());
-            orderDetailRequestDTO.setProductId(orderDetail.getProductId());
+            Product product = restTemplate.getForObject("http://localhost:8083/products/{productId}", Product.class, orderDetail.getProductId());
+            orderDetailRequestDTO.setProduct(product);
             orderDetailRequestDTO.setPricePerQuantity(orderDetail.getPricePerQuantity());
             orderDetailRequestDTO.setQuantity(orderDetail.getQuantity());
             orderDetailRequestDTO.setReceiverId(orderDetail.getReceiverId());

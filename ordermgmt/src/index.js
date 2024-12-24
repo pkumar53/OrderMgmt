@@ -4,19 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Medicines from './components/Medicines';
-import Order from './components/Order';
 import Report from './components/Report';
 import Cart from './components/Cart';
 import User from './components/User';
 import Notification from './components/Notification';
 import Address from './components/Address';
 import AddOrEditAddress from './components/AddOrEditAddress';
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-} from 'react-router-dom';
+import Order from './components/Order';
+import OrderDetail from './components/OrderDetail';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter ([
   {
@@ -58,6 +54,10 @@ const router = createBrowserRouter ([
   {
     path: "addOrEditAddress",
     element: <AddOrEditAddress />
+  },
+  {
+    path: "orderDetail",
+    element: <OrderDetail />
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

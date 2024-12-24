@@ -1,0 +1,88 @@
+.cartContainer {
+    min-height: 562px;
+}
+.cartLeftContainer {
+    min-height: 562px;
+    width: 200px;
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 100px 0 rgba(0,0,0,.17);
+    padding: 12px;
+    margin: 8px;
+    text-align: justify;
+    padding-left: 25px;
+}
+
+.cartRightContainer {
+    min-height: auto;
+    width: calc(100% - 225px);
+}
+
+.orderDiv {
+    height: 180px;
+    align-content: center;
+    border: 1px solid lightgray;
+    margin: 8px 0px;
+    box-shadow: 0 0 100px 0 rgba(0,0,0,.17);
+    color: gray;
+}
+
+.orderDiv:hover {
+    box-shadow: 0 0 100px 0 rgba(0,0,0,.27);
+    cursor: pointer;
+}
+
+.imageDiv {
+    width: 90px;
+    margin-left: 5vh;
+}
+
+.orderInfo {
+    width: 192px;
+    margin-left: 5vh;
+}
+
+.prodPrice {
+    width: 100px;
+    margin-left: 10vh;
+    font-size: 13px;
+    color: #000;
+}
+
+.deliveryInfo {
+    width: 180px;
+    font-size: 11px;
+}
+
+.prodName {
+    font-weight: bold;
+    font-size: 13px;
+    color: black;
+}
+
+.prodDetails {
+    font-size: 12px;
+}
+
+.date {
+    font-size: 12px;
+    color: black;
+}
+
+.filterCriteria>p {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.filterCriteria>div {
+    margin-bottom: 5px;
+}
+.filterCriteria>div>input {
+    float: left;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.filterCriteria>div>p {
+    font-size: 13px;
+}

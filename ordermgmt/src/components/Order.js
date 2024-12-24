@@ -1,7 +1,10 @@
 import React, { useEffect, useState} from 'react'
+import './Order.css'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import CartCount from './CartCount';
+import { format } from 'date-fns';
+import { useNavigate } from "react-router-dom";
 
 function Order(props) {
   const [activeTab, setActiveTab] = useState('order');
@@ -9,7 +12,12 @@ function Order(props) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
-  
+  const navigate = useNavigate();
+
+  const formatDate = (date) => {
+    return format(new Date(date), 'dd-MM-yyyy HH:mm');
+  };
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -33,6 +41,14 @@ function Order(props) {
     return <p style={{ color: "red" }}>Error: {error}</p>;
   }
 
+  const fetchOrderStatus = (status, orderDate, deliveryDate) => {
+    if (status === "PLACED") {
+      return <><p className='date'>Placed on {formatDate(orderDate)}</p><p>Your order has been placed.</p></>;
+    } else if (status === "COMPLETED") {
+      return <><p className='date'>Delivered on {deliveryDate}</p><p>Your item has been delivered.</p></>;
+    }
+  };
+
   return (
     <div>
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} cartCount={cartCount}/>
@@ -45,31 +61,70 @@ function Order(props) {
           <>
             {orders.length > 0 ?
               <div className="cartContainer mt-20">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Order Id</th>
-                      <th>Order Date</th>
-                      <th>Status</th>
-                      <th>Amount</th>
-                      <th>Address</th>
-                      <th>Customer</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map((order, index) => (
-                      <tr key={index + 1}>
-                        <td>{order.orderReferenceNumber}</td>
-                        <td>{order.orderDate}</td>
-                        <td>{order.orderStatus}</td>
-                        <td>{order.totalAmountForOrder}</td>
-                        <td>{order.address.areaName}, {order.address.addressDetail}</td>
-                        <td>{order.user.userFullName}</td>
-                        {/* <td>{order.items}</td> */}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <div className='cartLeftContainer fleft'>
+                  <h4 className='mt-20 mb-20'>Filter</h4>
+                  <div className='filterCriteria mb-20'>
+                    <p>ORDER STATUS</p>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>On the way</p>
+                    </div>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>Delivered</p>
+                    </div>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>Cancelled</p>
+                    </div>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>Returned</p>
+                    </div>
+                  </div>
+                  <div className='filterCriteria'>
+                    <p>ORDER TIME</p>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>Last 30 days</p>
+                    </div>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>2023</p>
+                    </div>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>2022</p>
+                    </div>
+                    <div>
+                      <input type='checkbox'></input>
+                      <p>Older</p>
+                    </div>
+                  </div>
+                </div>
+                <div className='cartRightContainer fleft'>
+                  {orders.map((order, index) => 
+                    order.orderDetailReqDTOs.map((orderDet, ind) => 
+                      (
+                        <div className='orderDiv' onClick={() => navigate(`/orderDetail?orderDetailId=${orderDet.orderDetailId}`)}>
+                          <p className='fontsize12 ml-40 mb-20'>Order Reference: {order.orderReferenceNumber}</p>
+                          <div className='imageDiv fleft'>
+                            <img src='./favIcon.ico' />
+                          </div>
+                          <div className='orderInfo fleft'>
+                            <p className='prodName'>{orderDet.product.productName}</p>
+                            <p className='prodDetails'>{orderDet.product.brandName}</p>
+                            <p className='prodDetails'>Quantity {orderDet.quantity}</p>
+                          </div>
+                          <div className='prodPrice fleft'><p>₹{orderDet.discountedPrice.toFixed(2)}</p></div>
+                          <div className='deliveryInfo fright'>
+                            {fetchOrderStatus(orderDet.status, order.orderDate, orderDet.deliveryDate)}
+                          </div>
+                      </div>
+                      )
+                    )
+                  )}
+                </div>
               </div>
             : <div className="cartContainer">
                 <h1 style={{textAlign: "center"}} className="mt-40">No Orders present yet.</h1>

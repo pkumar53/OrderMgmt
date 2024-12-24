@@ -44,12 +44,16 @@ h1 {
   background-color: #fff;
 }
 
+.ml-10 {
+  margin-left: 10px;
+}
+
 .ml-20 {
   margin-left: 20px;
 }
 
-.ml-10 {
-  margin-left: 10px;
+.ml-40 {
+  margin-left: 40px;
 }
 
 .mr-10 {
@@ -72,6 +76,10 @@ h1 {
   margin-bottom: 20px;
 }
 
+.mb-40 {
+  margin-bottom: 40px;
+}
+
 .aligncenter {
   align-content: center;
 }
@@ -82,6 +90,10 @@ h1 {
 
 .fright {
   float: right;
+}
+
+.fontsize12 {
+  font-size: 12px;
 }
 
 .table {
